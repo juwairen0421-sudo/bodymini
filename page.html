@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>身体记录本 - page</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header class="app-header">
+        <h1>身体记录本</h1>
+        <p>每天花 2 分钟，记录饮食、作息和身体状态，长期观察自己的规律。</p>
+      </header>
+
+      <section class="card">
+        <h2 id="form-title">今日记录</h2>
+        <form id="record-form" class="record-form">
+          <div class="grid">
+            <label>
+              日期
+              <input type="date" name="date" required />
+            </label>
+            <label>
+              入睡时间
+              <input type="time" name="sleepTime" />
+            </label>
+            <label>
+              起床时间
+              <input type="time" name="wakeTime" />
+            </label>
+            <label>
+              睡眠质量（1-5）
+              <input type="number" name="sleepQuality" min="1" max="5" />
+            </label>
+            <label>
+              醒来精神（1-5）
+              <input type="number" name="morningEnergy" min="1" max="5" />
+            </label>
+            <label class="full">
+              早餐
+              <textarea name="breakfast" rows="2"></textarea>
+            </label>
+            <label class="full">
+              午餐
+              <textarea name="lunch" rows="2"></textarea>
+            </label>
+            <label class="full">
+              晚餐
+              <textarea name="dinner" rows="2"></textarea>
+            </label>
+            <label class="full">
+              加餐 / 饮料 / 零食
+              <textarea name="snacks" rows="2"></textarea>
+            </label>
+            <label>
+              喝水量（例如 2L）
+              <input type="text" name="water" />
+            </label>
+            <label>
+              是否训练
+              <select name="trained">
+                <option value="否">否</option>
+                <option value="是">是</option>
+              </select>
+            </label>
+            <label class="full">
+              训练内容
+              <textarea name="trainingDetails" rows="2"></textarea>
+            </label>
+            <label class="full">
+              补剂
+              <textarea name="supplements" rows="2"></textarea>
+            </label>
+            <label>
+              胃口（1-5）
+              <input type="number" name="appetite" min="1" max="5" />
+            </label>
+            <label>
+              精力（1-5）
+              <input type="number" name="energy" min="1" max="5" />
+            </label>
+            <label>
+              专注度（1-5）
+              <input type="number" name="focus" min="1" max="5" />
+            </label>
+            <label class="full">
+              消化 / 身体感受
+              <textarea name="bodyFeeling" rows="2"></textarea>
+            </label>
+            <label class="full">
+              备注
+              <textarea name="notes" rows="2"></textarea>
+            </label>
+          </div>
+          <div class="actions">
+            <button type="submit" id="save-btn">保存记录</button>
+            <button type="button" id="cancel-edit-btn" class="secondary" hidden>
+              取消编辑
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <section class="card">
+        <div class="history-header">
+          <h2>历史记录</h2>
+          <span id="record-count">0 条</span>
+        </div>
+        <div id="history-list" class="history-list"></div>
+      </section>
+    </main>
+
+    <template id="record-item-template">
+      <article class="record-item">
+        <div class="record-head">
+          <button class="toggle" type="button"></button>
+          <div class="record-actions">
+            <button class="secondary edit-btn" type="button">编辑</button>
+            <button class="danger delete-btn" type="button">删除</button>
+          </div>
+        </div>
+        <div class="record-details" hidden></div>
+      </article>
+    </template>
+
+    <script src="app.js"></script>
+  </body>
+</html>
